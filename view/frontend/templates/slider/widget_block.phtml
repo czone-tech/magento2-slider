@@ -1,0 +1,8 @@
+<?php
+/**
+ * @var $block \CzoneTech\Slider\Block\Widget\Slider\Block
+ */
+$items = $block->getSliderItems();?>
+<?php foreach($items as $item):?>
+<?php echo $block->getFilterProvider()->getBlockFilter()->filter($item->getContent());?>
+<?php endforeach;?>

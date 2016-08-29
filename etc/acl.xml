@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="Magento_Backend::content_elements">
+                        <resource id="CzoneTech_Slider::slider_content" title="Slider" sortOrder="10">
+                            <resource id="CzoneTech_Slider::list_slider" title="List Sliders" sortOrder="10" />
+                            <resource id="CzoneTech_Slider::save_slider" title="Save Slider" sortOrder="10" />
+                            <resource id="CzoneTech_Slider::delete_slider" title="Delete Slider" sortOrder="20" />
+                        </resource>
+                        <resource id="CzoneTech_Slider::slider_item_content" title="Slider" sortOrder="10">
+                            <resource id="CzoneTech_Slider::list_slideritem" title="List Sliders" sortOrder="10" />
+                            <resource id="CzoneTech_Slider::save_slideritem" title="Save Slider" sortOrder="10" />
+                            <resource id="CzoneTech_Slider::delete_slideritem" title="Delete Slider" sortOrder="20" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

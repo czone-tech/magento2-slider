@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="ctslider_slider" class="CzoneTech\Slider\Block\Widget\Slider\Block">
+        <label translate="true">CT Slider Widget</label>
+        <description>CT Slider Widget</description>
+        <parameters>
+            <parameter name="slider_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">CMS Page</label>
+                <block class="CzoneTech\Slider\Block\Adminhtml\Slider\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Slider...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

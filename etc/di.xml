@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="CzoneTech\Slider\Api\Data\SliderItemInterface" type="CzoneTech\Slider\Model\SliderItem" />
+    <virtualType name="SliderItemGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SliderItemGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">CzoneTech\Slider\Model\ResourceModel\SliderItem\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SliderItemGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CzoneTech\Slider\Model\ResourceModel\SliderItem\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">czonetech_slider_items</argument>
+            <argument name="resourceModel" xsi:type="string">CzoneTech\Slider\Model\ResourceModel\SliderItem</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="CzoneTech\Slider\Api\Data\SliderInterface" type="CzoneTech\Slider\Model\Slider" />
+    <virtualType name="SliderGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SliderGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">CzoneTech\Slider\Model\ResourceModel\Slider\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SliderGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CzoneTech\Slider\Model\ResourceModel\Slider\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">czonetech_slider</argument>
+            <argument name="resourceModel" xsi:type="string">CzoneTech\Slider\Model\ResourceModel\Slider</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ctslider_slider_listing_data_source" xsi:type="string">CzoneTech\Slider\Model\ResourceModel\Slider\Grid\Collection</item>
+                <item name="ctslider_slideritem_listing_data_source" xsi:type="string">CzoneTech\Slider\Model\ResourceModel\SliderItem\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
