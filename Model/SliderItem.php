@@ -103,6 +103,27 @@ class SliderItem extends AbstractModel implements SliderItemInterface, IdentityI
     }
 
     /**
+     * Prepare post's statuses.
+     * Available event ctslider_slider_get_available_statuses to customize statuses.
+     *
+     * @return array
+     */
+    public function getAvailableStatuses()
+    {
+        return [self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled')];
+    }
+
+    /**
+     * Is active
+     *
+     * @return bool|null
+     */
+    public function getImageUrl()
+    {
+        return $this->getData(self::IMAGE_URL);
+    }
+
+    /**
      * Set title
      *
      * @param string $title
@@ -158,14 +179,17 @@ class SliderItem extends AbstractModel implements SliderItemInterface, IdentityI
     }
 
     /**
-     * Prepare post's statuses.
-     * Available event ctslider_slider_get_available_statuses to customize statuses.
+     * Set is active
      *
-     * @return array
+     * @param string $url
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
-    public function getAvailableStatuses()
+    public function setImageUrl($url)
     {
-        return [self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled')];
+        return $this->setData(self::IMAGE_URL, $url);
     }
+
+
+
 
 }

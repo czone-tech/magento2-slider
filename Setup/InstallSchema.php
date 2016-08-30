@@ -53,6 +53,7 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
             ->addColumn('title', Table::TYPE_TEXT, 255, ['nullable' => false], 'Slider Item Title')
             ->addColumn('slider_id', Table::TYPE_SMALLINT, null, ['nullable' => false], 'Slider ID')
             ->addColumn('content', Table::TYPE_TEXT, '2M', [], 'Slider Item Content')
+            ->addColumn('image_url', Table::TYPE_TEXT, 255, [], 'Slider Image')
             ->addColumn('is_active', Table::TYPE_SMALLINT, null, ['nullable' => false, 'default' => '1'], 'Is Slider Item Active?')
             ->addColumn('creation_time', Table::TYPE_DATETIME, null, ['nullable' => false], 'Creation Time')
             ->addColumn('update_time', Table::TYPE_DATETIME, null, ['nullable' => false], 'Update Time')

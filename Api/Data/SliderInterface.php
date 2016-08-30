@@ -13,6 +13,7 @@ interface SliderInterface
     const CREATION_TIME = 'creation_time';
     const UPDATE_TIME   = 'update_time';
     const IS_ACTIVE     = 'is_active';
+    const IMAGE_URL     = 'image_url';
 
     /**
      * Get ID
@@ -57,11 +58,13 @@ interface SliderInterface
      */
     public function isActive();
 
+
+
     /**
      * Set ID
      *
      * @param int $id
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
     public function setId($id);
 
@@ -70,7 +73,7 @@ interface SliderInterface
      * Set title
      *
      * @param string $title
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
     public function setTitle($title);
 
@@ -78,7 +81,7 @@ interface SliderInterface
      * Set content
      *
      * @param string $content
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
     public function setContent($content);
 
@@ -86,7 +89,7 @@ interface SliderInterface
      * Set creation time
      *
      * @param string $creationTime
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
     public function setCreationTime($creationTime);
 
@@ -94,7 +97,7 @@ interface SliderInterface
      * Set update time
      *
      * @param string $updateTime
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
     public function setUpdateTime($updateTime);
 
@@ -102,7 +105,9 @@ interface SliderInterface
      * Set is active
      *
      * @param int|bool $isActive
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
     public function setIsActive($isActive);
+
+
 }

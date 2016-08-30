@@ -13,6 +13,7 @@ interface SliderItemInterface
     const CREATION_TIME = 'creation_time';
     const UPDATE_TIME   = 'update_time';
     const IS_ACTIVE     = 'is_active';
+    const IMAGE_URL     = 'image_url';
 
     /**
      * Get ID
@@ -56,6 +57,13 @@ interface SliderItemInterface
      * @return bool|null
      */
     public function isActive();
+
+    /**
+     * Is active
+     *
+     * @return bool|null
+     */
+    public function getImageUrl();
 
     /**
      * Set ID
@@ -105,4 +113,12 @@ interface SliderItemInterface
      * @return \CzoneTech\Slider\Api\Data\PostInterface
      */
     public function setIsActive($isActive);
+
+    /**
+     * Set is active
+     *
+     * @param string $url
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
+     */
+    public function setImageUrl($url);
 }

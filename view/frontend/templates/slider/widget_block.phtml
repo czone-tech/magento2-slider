@@ -1,8 +1,53 @@
+<script>
+    require([
+        'jquery',
+        'owlcarousel',
+        'domReady!'
+    ], function ($) {
+        $("#czonetech-owl-carousel").owlCarousel({
+            nav: true,
+            dots: false,
+            loop: true,
+            autoplay: true,
+            items: 5,
+            margin: 10,
+            center: true,
+            responsive:{
+                0 : {
+                    items: 1
+                },
+
+                480 : {
+                    items: 1
+                },
+
+                768 : {
+                    items: 3
+                },
+
+                1024 : {
+                    items: 5
+                }
+            }
+        });
+    })
+
+</script>
 <?php
 /**
  * @var $block \CzoneTech\Slider\Block\Widget\Slider\Block
  */
 $items = $block->getSliderItems();?>
+<div id="czonetech-owl-carousel" class="owl-carousel">
 <?php foreach($items as $item):?>
-<?php echo $block->getFilterProvider()->getBlockFilter()->filter($item->getContent());?>
+<div>
+    <?php if($item->getTitle()):?>
+        <div class="slide-item-title"><?php echo $block->escapeHtml($item->getTitle());?></div>
+    <?php endif;?>
+
+    <?php if($item->getImageUrl()):?>
+    <img src="<?php echo $block->escapeHtml($item->getImageUrl());?>" />
+    <?php endif;?>
+</div>
 <?php endforeach;?>
+</div>
