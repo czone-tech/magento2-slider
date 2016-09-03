@@ -45,8 +45,8 @@ $items = $block->getSliderItems();?>
         <div class="slide-item-title"><?php echo $block->escapeHtml($item->getTitle());?></div>
     <?php endif;?>
 
-    <?php if($item->getImageUrl()):?>
-    <img src="<?php echo $block->escapeHtml($item->getImageUrl());?>" />
+    <?php if($item->getContent()):?>
+        <div class="slide-item-content"><?php echo $block->getFilterProvider()->getBlockFilter()->filter($item->getContent());?></div>
     <?php endif;?>
 </div>
 <?php endforeach;?>

@@ -18,9 +18,10 @@ class Slider extends AbstractModel implements SliderInterface, IdentityInterface
     /**#@+
      * Slider's Statuses
      */
-    const CONTENT_TYPE_PRODUCTS = 1;
-    const CONTENT_TYPE_CUSTOM = 2;
-    const CONTENT_TYPE_IMAGES = 3;
+
+    const CONTENT_TYPE_CUSTOM = 1;
+    const CONTENT_TYPE_IMAGE = 2;
+    const CONTENT_TYPE_VIDEO = 3;
 
     /**
      * CMS page cache tag
@@ -183,8 +184,8 @@ class Slider extends AbstractModel implements SliderInterface, IdentityInterface
      */
     public function getAvailableContentTypes()
     {
-        return [self::CONTENT_TYPE_CUSTOM => __('Custom'), self::CONTENT_TYPE_IMAGES => __('Image'),
-            self::CONTENT_TYPE_PRODUCTS => __('Product')];
+        return [self::CONTENT_TYPE_CUSTOM => __('Custom'), self::CONTENT_TYPE_IMAGE => __('Image'),
+            self::CONTENT_TYPE_VIDEO => __('Video')];
     }
 
 }

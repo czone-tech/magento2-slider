@@ -57,13 +57,11 @@ class SliderActions extends Column
             foreach ($dataSource['data']['items'] as &$item) {
                 $name = $this->getData('name');
                 if (isset($item['slider_id'])) {
-                    if($item['content_type'] != Slider::CONTENT_TYPE_PRODUCTS){
-                        $item[$name]['manage_items'] = [
-                            'href' => $this->urlBuilder->getUrl(self::URL_PATH_MANAGE_ITEMS, ['slider_id' =>
-                                $item['slider_id']]),
-                            'label' => __('Manage Items')
-                        ];
-                    }
+                    $item[$name]['manage_items'] = [
+                        'href' => $this->urlBuilder->getUrl(self::URL_PATH_MANAGE_ITEMS, ['slider_id' =>
+                            $item['slider_id']]),
+                        'label' => __('Manage Items')
+                    ];
 
                     $item[$name]['edit'] = [
                         'href' => $this->urlBuilder->getUrl($this->editUrl, ['slider_id' => $item['slider_id']]),
