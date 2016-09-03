@@ -1,63 +1,51 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: ashish
+ * Date: 2/9/16
+ * Time: 6:25 PM
+ */
 
 namespace CzoneTech\Slider\Block\Widget\Slider;
 
+use CzoneTech\Slider\Model\Slider;
+use CzoneTech\Slider\Model\SliderFactory;
 use Magento\Framework\View\Element\Template;
 
 class Block extends Template implements \Magento\Widget\Block\BlockInterface
 {
 
-    /**
-     * Path to template file in theme.
-     *
-     * @var string
-     */
-    protected $_template = 'CzoneTech_Slider::slider/widget_block.phtml';
-
-    /**
-     * @var \CzoneTech\Slider\Model\ResourceModel\SliderItem\Collection
-     */
-    protected $_sliderItemCollection;
-
-    /**
-     * @var \Magento\Cms\Model\Template\FilterProvider
-     */
-    protected $_filterProvider;
+    protected $sliderFactory;
 
     /**
      * Constructor
      *
      * @param Template\Context $context
-     * @param \CzoneTech\Slider\Model\ResourceModel\SliderItem\Collection $sliderItemCollection
-     * @param \Magento\Cms\Model\Template\FilterProvider $filterProvider
      * @param array $data
      */
-    public function __construct(
-        Template\Context $context,
-        \CzoneTech\Slider\Model\ResourceModel\SliderItem\Collection $sliderItemCollection,
-        \Magento\Cms\Model\Template\FilterProvider $filterProvider,
-        array $data = [])
+    public function __construct(Template\Context $context,
+                                SliderFactory $sliderFactory,
+                                array $data = [])
     {
-        $this->_filterProvider = $filterProvider;
-        $this->_sliderItemCollection = $sliderItemCollection;
+        $this->sliderFactory = $sliderFactory;
         parent::__construct($context, $data);
     }
 
     /**
-     * @return \Magento\Cms\Model\Template\FilterProvider
+     * Render block HTML
+     *
+     * @return string
      */
-    public function getFilterProvider(){
-        return $this->_filterProvider;
+    protected function _toHtml()
+    {
+        $sliderId = $this->getData('slider_id');
+        $slider = $this->sliderFactory->create()->load($sliderId);
+        if($slider->getContentType() == Slider::CONTENT_TYPE_PRODUCTS){
+            $blockName = \CzoneTech\Slider\Block\Widget\Slider\Product::class;
+        }else{
+            $blockName = \CzoneTech\Slider\Block\Widget\Slider\Image::class;
+        }
+        return $this->_layout->createBlock($blockName)->toHtml();
     }
 
-    /**
-     * @return \CzoneTech\Slider\Model\SliderItem[]
-     */
-    public function getSliderItems(){
-        $sliderId = $this->getData('slider_id');
-        $collection = $this->_sliderItemCollection
-            ->addFieldToFilter('slider_id', $sliderId)
-            ;
-        return $collection->load();
-    }
 }

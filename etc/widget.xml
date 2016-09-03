@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget_file.xsd">
     <widget id="ctslider_slider" class="CzoneTech\Slider\Block\Widget\Slider\Block">
         <label translate="true">CT Slider Widget</label>
         <description>CT Slider Widget</description>
@@ -17,5 +17,27 @@
                 </block>
             </parameter>
         </parameters>
+    </widget>
+    <widget id="new_products">
+       <parameters>
+           <parameter name="template" xsi:type="select" required="true" visible="true">
+               <label translate="true">Template</label>
+               <options>
+                   <option name="ct_slider_new_product" value="CzoneTech_Slider::slider/product.phtml" selected="true">
+                       <label translate="true">CT New Products Slider template</label>
+                   </option>
+               </options>
+           </parameter>
+           <parameter name="product_slide_count" xsi:type="text" visible="true" sort_order="10">
+               <label translate="true">Number of Products in Slider</label>
+               <description translate="true">Number of products in the slider at a given time. Only applies if slider template is chosen in 'Layout Updates' section.</description>
+               <value>5</value>
+           </parameter>
+       </parameters>
+        <containers>
+            <container name="content">
+                <template name="ct_slider" value="ct_slider_new_product" />
+            </container>
+        </containers>
     </widget>
 </widgets>

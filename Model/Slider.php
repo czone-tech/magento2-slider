@@ -15,6 +15,13 @@ class Slider extends AbstractModel implements SliderInterface, IdentityInterface
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 0;
 
+    /**#@+
+     * Slider's Statuses
+     */
+    const CONTENT_TYPE_PRODUCTS = 1;
+    const CONTENT_TYPE_CUSTOM = 2;
+    const CONTENT_TYPE_IMAGES = 3;
+
     /**
      * CMS page cache tag
      */
@@ -67,9 +74,9 @@ class Slider extends AbstractModel implements SliderInterface, IdentityInterface
      *
      * @return string|null
      */
-    public function getContent()
+    public function getContentType()
     {
-        return $this->getData(self::CONTENT);
+        return $this->getData(self::CONTENT_TYPE);
     }
 
     /**
@@ -116,12 +123,12 @@ class Slider extends AbstractModel implements SliderInterface, IdentityInterface
     /**
      * Set content
      *
-     * @param string $content
+     * @param string $contentType
      * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
-    public function setContent($content)
+    public function setContentType($contentType)
     {
-        return $this->setData(self::CONTENT, $content);
+        return $this->setData(self::CONTENT_TYPE, $contentType);
     }
 
     /**
@@ -166,6 +173,18 @@ class Slider extends AbstractModel implements SliderInterface, IdentityInterface
     public function getAvailableStatuses()
     {
         return [self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled')];
+    }
+
+    /**
+     * Prepare post's statuses.
+     * Available event ctslider_slider_get_available_statuses to customize statuses.
+     *
+     * @return array
+     */
+    public function getAvailableContentTypes()
+    {
+        return [self::CONTENT_TYPE_CUSTOM => __('Custom'), self::CONTENT_TYPE_IMAGES => __('Image'),
+            self::CONTENT_TYPE_PRODUCTS => __('Product')];
     }
 
 }

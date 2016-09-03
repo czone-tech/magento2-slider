@@ -137,14 +137,29 @@
                     </item>
                 </argument>
             </filterInput>
-            <filterInput name="url_key">
+            <filterSelect name="content_type">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
-                        <item name="dataScope" xsi:type="string">url_key</item>
-                        <item name="label" xsi:type="string" translate="true">URL Key</item>
+                        <item name="dataScope" xsi:type="string">content_type</item>
+                        <item name="label" xsi:type="string" translate="true">Content Type</item>
+                        <item name="caption" xsi:type="string" translate="true">Select...</item>
+                        <item name="options" xsi:type="array">
+                            <item name="product" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string" translate="true">Product</item>
+                            </item>
+                            <item name="custom" xsi:type="array">
+                                <item name="value" xsi:type="string">2</item>
+                                <item name="label" xsi:type="string" translate="true">Custom</item>
+                            </item>
+                            <item name="image" xsi:type="array">
+                                <item name="value" xsi:type="string">3</item>
+                                <item name="label" xsi:type="string" translate="true">Image</item>
+                            </item>
+                        </item>
                     </item>
                 </argument>
-            </filterInput>
+            </filterSelect>
             <filterSelect name="is_active">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -360,17 +375,15 @@
                 </item>
             </argument>
         </column>
-        <column name="url_key">
+        <column name="content_type">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">CzoneTech\Slider\Model\Slider\Source\ContentType</item>
                 <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="editor" xsi:type="array">
-                        <item name="editorType" xsi:type="string">text</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
-                    </item>
-                    <item name="label" xsi:type="string" translate="true">URL Key</item>
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="editor" xsi:type="string">select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Content Type</item>
                 </item>
             </argument>
         </column>

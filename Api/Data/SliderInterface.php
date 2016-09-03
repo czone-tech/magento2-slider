@@ -9,7 +9,7 @@ interface SliderInterface
      */
     const SLIDER_ID       = 'slider_id';
     const TITLE         = 'title';
-    const CONTENT       = 'content';
+    const CONTENT_TYPE       = 'content_type';
     const CREATION_TIME = 'creation_time';
     const UPDATE_TIME   = 'update_time';
     const IS_ACTIVE     = 'is_active';
@@ -35,7 +35,7 @@ interface SliderInterface
      *
      * @return string|null
      */
-    public function getContent();
+    public function getContentType();
 
     /**
      * Get creation time
@@ -80,10 +80,10 @@ interface SliderInterface
     /**
      * Set content
      *
-     * @param string $content
+     * @param string $contentType
      * @return \CzoneTech\Slider\Api\Data\SliderInterface
      */
-    public function setContent($content);
+    public function setContentType($contentType);
 
     /**
      * Set creation time

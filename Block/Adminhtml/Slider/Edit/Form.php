@@ -14,6 +14,11 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected $_systemStore;
 
     /**
+     * @var \CzoneTech\Slider\Model\Slider
+     */
+    protected $sliderModel;
+
+    /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Data\FormFactory $formFactory
@@ -26,9 +31,11 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Store\Model\System\Store $systemStore,
+        \CzoneTech\Slider\Model\Slider $sliderModel,
         array $data = []
     ) {
         $this->_systemStore = $systemStore;
+        $this->sliderModel = $sliderModel;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -85,7 +92,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Status'),
                 'name' => 'is_active',
                 'required' => true,
-                'options' => ['1' => __('Enabled'), '0' => __('Disabled')]
+                'options' => $this->sliderModel->getAvailableStatuses()
             ]
         );
         if (!$model->getId()) {
@@ -93,14 +100,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         }
 
         $fieldset->addField(
-            'content',
-            'editor',
+            'content_type',
+            'select',
             [
-                'name' => 'content',
-                'label' => __('Content'),
-                'title' => __('Content'),
-                'style' => 'height:36em',
-                'required' => true
+                'label' => __('Content Type'),
+                'title' => __('Content Type'),
+                'name' => 'content_type',
+                'required' => true,
+                'options' => $this->sliderModel->getAvailableContentTypes()
             ]
         );
 
