@@ -13,7 +13,7 @@
         'owlcarousel',
         'domReady!'
     ], function($){
-        $("#ctslider_products").owlCarousel({
+        $("#ctslider_new_product").owlCarousel({
             nav: true,
             dots: false,
             loop: true,
@@ -76,7 +76,7 @@ if ($exist = ($block->getProductCollection() && $block->getProductCollection()->
         <div class="block-content">
             <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
             <div class="products-<?php /* @escapeNotVerified */ echo $mode; ?> <?php /* @escapeNotVerified */ echo $mode; ?>">
-                <ol id="ctslider_products" class="product-items <?php /* @escapeNotVerified */ echo $type; ?>">
+                <ol id="ctslider_new_product" class="product-items <?php /* @escapeNotVerified */ echo $type; ?>">
                     <?php $iterator = 1; ?>
                     <?php foreach ($items as $_item): ?>
                         <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="product-item">' : '</li><li class="product-item">' ?>
