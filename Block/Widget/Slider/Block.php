@@ -27,6 +27,7 @@ class Block extends Template implements \Magento\Widget\Block\BlockInterface
      */
     protected $_filterProvider;
 
+    protected $_template = 'CzoneTech_Slider::slider/block.phtml';
     /**
      * Constructor
      *
@@ -46,18 +47,13 @@ class Block extends Template implements \Magento\Widget\Block\BlockInterface
         parent::__construct($context, $data);
     }
 
-    protected function _getTemplate(){
+    public function getContentType(){
         $sliderId = $this->getData('slider_id');
         $slider = $this->sliderFactory->create()->load($sliderId);
-        $types = $slider->getAvailableContentTypes();
-        $type = strtolower($types[$slider->getContentType()]);
-        return "CzoneTech_Slider::slider/{$type}.phtml";
+        return $slider->getContentType();
     }
 
-    protected function _beforeToHtml(){
-        $this->setTemplate($this->_getTemplate());
-        parent::_beforeToHtml();
-    }
+
 
     /**
      * @return \Magento\Cms\Model\Template\FilterProvider

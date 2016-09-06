@@ -23,11 +23,11 @@
                     items: <?php echo $block->getData('slide_count_tablet');?>
                 },
 
-                1200 : {
+                992 : {
                     items: <?php echo $block->getData('slide_count_desktop_small');?>
                 },
 
-                1024 : {
+                1200 : {
                     items: <?php echo $block->getData('slide_count_desktop');?>
                 }
             }
@@ -46,9 +46,12 @@ $items = $block->getSliderItems();?>
     <?php if($item->getTitle()):?>
         <div class="slide-item-title"><?php echo $block->escapeHtml($item->getTitle());?></div>
     <?php endif;?>
-
-    <?php if($item->getImageUrl()):?>
-    <img src="<?php echo $block->escapeHtml($item->getImageUrl());?>" />
+    <?php if($block->getContentType() == \CzoneTech\Slider\Model\Slider::CONTENT_TYPE_IMAGE):?>
+        <?php if($item->getImageUrl()):?>
+        <img src="<?php echo $block->escapeHtml($item->getImageUrl());?>" />
+        <?php endif;?>
+    <?php elseif($block->getContentType() == \CzoneTech\Slider\Model\Slider::CONTENT_TYPE_CUSTOM):?>
+        <?php echo $block->getFilterProvider()->getBlockFilter()->filter($item->getContent());?>
     <?php endif;?>
 </div>
 <?php endforeach;?>
