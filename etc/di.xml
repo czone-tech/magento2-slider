@@ -9,13 +9,7 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="SliderItemGridDataProvider"
-                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
-        <arguments>
-            <argument name="collection" xsi:type="object" shared="false">CzoneTech\Slider\Model\ResourceModel\SliderItem\Collection</argument>
-            <argument name="filterPool" xsi:type="object" shared="false">SliderItemGridFilterPool</argument>
-        </arguments>
-    </virtualType>
+
     <virtualType name="CzoneTech\Slider\Model\ResourceModel\SliderItem\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">czonetech_slider_items</argument>
@@ -32,13 +26,7 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="SliderGridDataProvider"
-                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
-        <arguments>
-            <argument name="collection" xsi:type="object" shared="false">CzoneTech\Slider\Model\ResourceModel\Slider\Collection</argument>
-            <argument name="filterPool" xsi:type="object" shared="false">SliderGridFilterPool</argument>
-        </arguments>
-    </virtualType>
+
     <virtualType name="CzoneTech\Slider\Model\ResourceModel\Slider\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">czonetech_slider</argument>

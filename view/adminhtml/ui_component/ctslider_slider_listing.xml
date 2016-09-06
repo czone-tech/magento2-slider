@@ -23,7 +23,7 @@
     </argument>
     <dataSource name="ctslider_slider_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">SliderGridDataProvider</argument>
+            <argument name="class" xsi:type="string">CzoneTech\Slider\Ui\Component\Listing\DataProvider\SliderGridDataProvider</argument>
             <argument name="name" xsi:type="string">ctslider_slider_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">slider_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>

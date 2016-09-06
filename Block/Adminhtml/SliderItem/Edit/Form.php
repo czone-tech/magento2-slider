@@ -1,6 +1,8 @@
 <?php
 
 namespace CzoneTech\Slider\Block\Adminhtml\SliderItem\Edit;
+use CzoneTech\Slider\Model\Slider;
+use CzoneTech\Slider\Ui\Component\Listing\DataProvider\SliderItemGridDataProvider;
 
 /**
  * Adminhtml blog post edit form
@@ -19,9 +21,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected $_systemStore;
 
     /**
-     * @var \CzoneTech\Slider\Model\ResourceModel\Slider\Collection
+     * @var \CzoneTech\Slider\Model\SliderFactory
      */
-    protected $_sliderCollection;
+    protected $_sliderFactory;
+
+    /**
+     * @var \Magento\Framework\Session\SessionManagerInterface
+     */
+    protected $_sessionManager;
 
     /**
      * @param \Magento\Backend\Block\Template\Context $context
@@ -37,13 +44,15 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Store\Model\System\Store $systemStore,
-        \CzoneTech\Slider\Model\ResourceModel\Slider\Collection $sliderCollection,
+        \CzoneTech\Slider\Model\SliderFactory $sliderFactory,
         \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
+        \Magento\Framework\Session\SessionManagerInterface $sessionManager,
         array $data = []
     ) {
         $this->_systemStore = $systemStore;
-        $this->_sliderCollection = $sliderCollection;
+        $this->_sliderFactory = $sliderFactory;
         $this->_wysiwygConfig = $wysiwygConfig;
+        $this->_sessionManager = $sessionManager;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -85,15 +94,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             $fieldset->addField('slider_item_id', 'hidden', ['name' => 'slider_item_id']);
         }
 
-
-
         $fieldset->addField(
             'title',
             'text',
             ['name' => 'title', 'label' => __('Slider Item Title'), 'title' => __('Slider Item Title'), 'required' => true]
         );
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'slider_id',
             'select',
             [
@@ -103,14 +110,39 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'options' => $this->_sliderCollection->getOptions()
             ]
+        );*/
+        $sliderId = $this->_sessionManager->getData(SliderItemGridDataProvider::SESSION_KEY_SLIDER_ID);
+
+        $slider = $this->_sliderFactory->create()->load($sliderId);
+
+        $fieldset->addField(
+            'slider_id',
+            'hidden',
+            ['value' => $sliderId]
         );
 
-        $fieldset->addField('image_url', 'imagefile', [
-            'label' => __('Image'),
-            'title' => __('Image'),
-            'name' => 'image_url',
-            'required' => true
-        ]);
+        if($slider->getContentType() == Slider::CONTENT_TYPE_IMAGE){
+            $fieldset->addField('image_url', 'imagefile', [
+                'label' => __('Image'),
+                'title' => __('Image'),
+                'name' => 'image_url',
+                'required' => true
+            ]);
+        }elseif($slider->getContentType() == Slider::CONTENT_TYPE_CUSTOM){
+            $fieldset->addField(
+                'content',
+                'editor',
+                [
+                    'name' => 'content',
+                    'label' => __('Content'),
+                    'title' => __('Content'),
+                    'style' => 'height:36em',
+                    'required' => true,
+                    'config' => $this->_wysiwygConfig->getConfig()
+                ]
+            );
+        }
+
 
         $fieldset->addField(
             'is_active',
@@ -126,20 +158,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         if (!$model->getId()) {
             $model->setData('is_active', '1');
         }
-
-        $fieldset->addField(
-            'content',
-            'editor',
-            [
-                'name' => 'content',
-                'label' => __('Content'),
-                'title' => __('Content'),
-                'style' => 'height:36em',
-                'required' => true,
-                'config' => $this->_wysiwygConfig->getConfig()
-            ]
-        );
-
 
 
         $form->setValues($model->getData());
