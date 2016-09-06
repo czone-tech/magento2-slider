@@ -16,6 +16,82 @@
                     </data>
                 </block>
             </parameter>
+            <parameter name="slide_count_desktop" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Number of Slides to be shown on desktop screens</label>
+                <description translate="true">Number of slides shown at a given time.</description>
+                <value>5</value>
+            </parameter>
+            <parameter name="slide_count_desktop_small" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Number of Slides to be shown on small desktop screens</label>
+                <description translate="true">Number of slides shown at a given time.</description>
+                <value>4</value>
+            </parameter>
+            <parameter name="slide_count_tablet" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Number of Slides to be shown on tablet screens</label>
+                <description translate="true">Number of slides shown at a given time.</description>
+                <value>2</value>
+            </parameter>
+            <parameter name="slide_count_mobile" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Number of Slides to be shown on mobile screens</label>
+                <description translate="true">Number of slides shown at a given time.</description>
+                <value>1</value>
+            </parameter>
+            <parameter name="show_slide_navigation_controls" xsi:type="select" visible="true" sort_order="10">
+                <label translate="true">Display Navigation (Prev/Next buttons)?</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_slide_pagination_controls" xsi:type="select" visible="true" sort_order="10">
+                <label translate="true">Display Pagination Controls?</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="slide_auto_play_animation" xsi:type="select" visible="true" sort_order="10">
+                <label translate="true">Automatically animate slides?</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="slide_pause_animation_on_hover" xsi:type="select" visible="true" sort_order="10">
+                <label translate="true">Pause animation on hover?</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="slide_animation_speed" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Time taken while animating from one slide to another (in milliseconds)</label>
+                <value>200</value>
+            </parameter>
+            <parameter name="slide_animation_interval" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Time before the next slide begins to animate (in milliseconds)</label>
+                <value>2000</value>
+            </parameter>
+            <parameter name="slide_wrapper_class" xsi:type="text" visible="true" sort_order="10">
+                <label translate="true">Slider CSS class</label>
+            </parameter>
+
         </parameters>
     </widget>
     <widget id="new_products">
