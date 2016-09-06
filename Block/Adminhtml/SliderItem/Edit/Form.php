@@ -118,7 +118,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         $fieldset->addField(
             'slider_id',
             'hidden',
-            ['value' => $sliderId]
+            [
+                'name' => 'slider_id'
+            ]
         );
 
         if($slider->getContentType() == Slider::CONTENT_TYPE_IMAGE){
@@ -160,7 +162,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         }
 
 
-        $form->setValues($model->getData());
+        $form->setValues(array_merge($model->getData(), ['slider_id' => $sliderId]));
         $form->setUseContainer(true);
         $this->setForm($form);
 

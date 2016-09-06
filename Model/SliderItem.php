@@ -52,6 +52,11 @@ class SliderItem extends AbstractModel implements SliderItemInterface, IdentityI
         return [self::CACHE_TAG . '_' . $this->getId()];
     }
 
+    public function getSliderId()
+    {
+        return $this->getData(self::SLIDER_ID);
+    }
+
     /**
      * Get title
      *
@@ -121,6 +126,17 @@ class SliderItem extends AbstractModel implements SliderItemInterface, IdentityI
     public function getImageUrl()
     {
         return $this->getData(self::IMAGE_URL);
+    }
+
+    /**
+     * Set SliderId
+     *
+     * @param string $sliderId
+     * @return \CzoneTech\Slider\Api\Data\SliderInterface
+     */
+    public function setSliderId($sliderId)
+    {
+        return $this->setData(self::SLIDER_ID, $sliderId);
     }
 
     /**

@@ -9,6 +9,7 @@
 namespace CzoneTech\Slider\Controller\Adminhtml\SliderItem;
 
 
+use CzoneTech\Slider\Model\Slider;
 use Magento\Backend\App\Action;
 use Magento\TestFramework\ErrorLog\Logger;
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -77,22 +78,29 @@ class Save extends \Magento\Backend\App\Action
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
-            /** @var \CzoneTech\Slider\Model\Slider $model */
+            /** @var \CzoneTech\Slider\Model\SliderItem $model */
             $model = $this->_objectManager->create('\CzoneTech\Slider\Model\SliderItem');
 
             $id = $this->getRequest()->getParam('slider_item_id');
             if ($id) {
                 $model->load($id);
             }
-            try{
-                $data['image_url'] = $this->saveImage();
-            } catch (\Exception $e) {
-                $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
-                $this->messageManager->addException($e, __('Something went wrong while uploading the file.'));
-                $this->_getSession()->setFormData($data);
-                return $resultRedirect->setPath('*/*/edit', ['slider_item_id' => $this->getRequest()->getParam
-                ('slider_item_id')]);
+            /** @var \CzoneTech\Slider\Model\Slider $slider */
+            $slider = $this->_objectManager->create('\CzoneTech\Slider\Model\Slider');
+            $slider->load($model->getSliderId());
+            if($slider->getContentType() == Slider::CONTENT_TYPE_IMAGE){
+                try{
+                    $data['image_url'] = $this->saveImage();
+
+                } catch (\Exception $e) {
+                    $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
+                    $this->messageManager->addException($e, __('Something went wrong while uploading the file.'));
+                    $this->_getSession()->setFormData($data);
+                    return $resultRedirect->setPath('*/*/edit', ['slider_item_id' => $this->getRequest()->getParam
+                    ('slider_item_id')]);
+                }
             }
+
 
             $model->setData($data);
 

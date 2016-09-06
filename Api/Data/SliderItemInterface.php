@@ -8,6 +8,7 @@ interface SliderItemInterface
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
     const SLIDER_ITEM_ID       = 'slider_item_id';
+    const SLIDER_ID     = 'slider_id';
     const TITLE         = 'title';
     const CONTENT       = 'content';
     const CREATION_TIME = 'creation_time';
@@ -21,6 +22,13 @@ interface SliderItemInterface
      * @return int|null
      */
     public function getId();
+
+    /**
+     * Get Slider ID
+     *
+     * @return int|null
+     */
+    public function getSliderId();
 
 
     /**
@@ -69,16 +77,24 @@ interface SliderItemInterface
      * Set ID
      *
      * @param int $id
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderItemInterface
      */
     public function setId($id);
+
+    /**
+     * Set Slider ID
+     *
+     * @param int $sliderId
+     * @return \CzoneTech\Slider\Api\Data\SliderItemInterface
+     */
+    public function setSliderId($sliderId);
 
 
     /**
      * Set title
      *
      * @param string $title
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderItemInterface
      */
     public function setTitle($title);
 
@@ -86,7 +102,7 @@ interface SliderItemInterface
      * Set content
      *
      * @param string $content
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderItemInterface
      */
     public function setContent($content);
 
@@ -94,7 +110,7 @@ interface SliderItemInterface
      * Set creation time
      *
      * @param string $creationTime
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderItemInterface
      */
     public function setCreationTime($creationTime);
 
@@ -102,7 +118,7 @@ interface SliderItemInterface
      * Set update time
      *
      * @param string $updateTime
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderItemInterface
      */
     public function setUpdateTime($updateTime);
 
@@ -110,7 +126,7 @@ interface SliderItemInterface
      * Set is active
      *
      * @param int|bool $isActive
-     * @return \CzoneTech\Slider\Api\Data\PostInterface
+     * @return \CzoneTech\Slider\Api\Data\SliderItemInterface
      */
     public function setIsActive($isActive);
 
