@@ -69,20 +69,7 @@
                 </item>
             </argument>
         </container>
-        <filterSearch name="fulltext">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/search/search</item>
-                    <item name="displayArea" xsi:type="string">dataGridFilters</item>
-                    <item name="provider" xsi:type="string">ctslider_slideritem_listing.ctslider_slideritem_listing_data_source</item>
-                    <item name="chipsProvider" xsi:type="string">ctslider_slideritem_listing.ctslider_slideritem_listing.listing_top.listing_filters_chips</item>
-                    <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">ctslider_slideritem_listing.ctslider_slideritem_listing.listing_top.bookmarks</item>
-                        <item name="namespace" xsi:type="string">current.search</item>
-                    </item>
-                </item>
-            </argument>
-        </filterSearch>
+
         <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -100,35 +87,7 @@
                     </item>
                 </item>
             </argument>
-            <filterRange name="slider_item_id">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="dataScope" xsi:type="string">slider_item_id</item>
-                        <item name="label" xsi:type="string" translate="true">ID</item>
-                        <item name="childDefaults" xsi:type="array">
-                            <item name="provider" xsi:type="string">ctslider_slideritem_listing.ctslider_slideritem_listing.listing_top.listing_filters</item>
-                        </item>
-                    </item>
-                </argument>
-                <filterInput name="from">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="dataScope" xsi:type="string">from</item>
-                            <item name="label" xsi:type="string" translate="true">from</item>
-                            <item name="placeholder" xsi:type="string" translate="true">From</item>
-                        </item>
-                    </argument>
-                </filterInput>
-                <filterInput name="to">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="dataScope" xsi:type="string">to</item>
-                            <item name="label" xsi:type="string" translate="true">to</item>
-                            <item name="placeholder" xsi:type="string" translate="true">To</item>
-                        </item>
-                    </argument>
-                </filterInput>
-            </filterRange>
+
             <filterInput name="title">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -137,14 +96,7 @@
                     </item>
                 </argument>
             </filterInput>
-            <filterInput name="url_key">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="dataScope" xsi:type="string">url_key</item>
-                        <item name="label" xsi:type="string" translate="true">URL Key</item>
-                    </item>
-                </argument>
-            </filterInput>
+
             <filterSelect name="is_active">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
@@ -340,7 +292,6 @@
         <column name="slider_item_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
                 </item>
@@ -360,20 +311,7 @@
                 </item>
             </argument>
         </column>
-        <column name="url_key">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="editor" xsi:type="array">
-                        <item name="editorType" xsi:type="string">text</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
-                    </item>
-                    <item name="label" xsi:type="string" translate="true">URL Key</item>
-                </item>
-            </argument>
-        </column>
+
         <column name="is_active">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">CzoneTech\Slider\Model\Slider\Source\IsActive</item>

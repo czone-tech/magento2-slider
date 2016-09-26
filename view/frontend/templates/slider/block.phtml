@@ -5,15 +5,15 @@
         'domReady!'
     ], function ($) {
         $("#czonetech-owl-carousel-<?php echo $block->getData('slider_id');?>").owlCarousel({
-            nav: <?php echo $block->getData('show_slide_navigation_controls');?>,
-            dots: <?php echo $block->getData('show_slide_pagination_controls');?>,
+            nav: <?php echo $block->getData('show_slide_navigation_controls')? 'true': 'false';?>,
+            dots: <?php echo $block->getData('show_slide_pagination_controls')? 'true': 'false';?>,
             loop: true,
-            autoplay: <?php echo $block->getData('slide_auto_play_animation');?>,
+            autoplay: <?php echo $block->getData('slide_auto_play_animation')? 'true': 'false';?>,
             margin: 10,
             center: true,
             autoplaySpeed: <?php echo $block->getData('slide_animation_speed');?>,
             autoplayTimeout: <?php echo $block->getData('slide_animation_interval');?>,
-            autoplayHoverPause: <?php echo $block->getData('slide_pause_animation_on_hover');?>,
+            autoplayHoverPause: <?php echo $block->getData('slide_pause_animation_on_hover')? 'true': 'false';?>,
             responsive:{
                 0 : {
                     items: <?php echo $block->getData('slide_count_mobile');?>
