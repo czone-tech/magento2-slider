@@ -21,8 +21,8 @@ Also, it allows you to maximize the usage of available screen space. So you are 
 #####Using Composer
 
 ```
-composer config repositories.czone-tech-magento2-slider git git@github.com:czone-tech/magento2-slider.git
-composer require czone-tech/magento2-slider
+composer config repositories.czone-tech composer https://repo.czonetechnologies.com
+composer require czone-tech/slider
 ```
 
 ####2 -  Enabling the module
