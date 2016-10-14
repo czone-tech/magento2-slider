@@ -21,7 +21,6 @@ Also, it allows you to maximize the usage of available screen space. So you are 
 #####Using Composer
 
 ```
-composer config repositories.czone-tech composer https://repo.czonetechnologies.com
 composer require czonetech/slider
 ```
 
