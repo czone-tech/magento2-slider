@@ -22,7 +22,7 @@ Also, it allows you to maximize the usage of available screen space. So you are 
 
 ```
 composer config repositories.czone-tech composer https://repo.czonetechnologies.com
-composer require czone-tech/slider
+composer require czonetech/slider
 ```
 
 ####2 -  Enabling the module
