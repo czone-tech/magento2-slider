@@ -39,14 +39,14 @@
             </item>
         </argument>
     </dataSource>
-    <listingToolbar name="listing_top">
+    <container name="listing_top">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="template" xsi:type="string">ui/grid/toolbar</item>
             </item>
         </argument>
         <bookmark name="bookmarks"/>
-        <columnsControls name="columns_controls"/>
+        <component name="columns_controls"/>
 
         <filters name="listing_filters">
             <argument name="data" xsi:type="array">
@@ -105,7 +105,7 @@
             </action>
         </massaction>
         <paging name="listing_paging"/>
-    </listingToolbar>
+    </container>
     <columns name="ctslider_slider_columns">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
