@@ -1,5 +1,13 @@
 {
   "name": "czonetech/slider",
+  "authors":[
+    {
+      "name": "Czone Technologies",
+      "email": "support@czonetechnologies.com",
+      "homepage": "http://www.czonetechnologies.com/"
+    }
+  ],
+  "license": "GPL-2.0+",
   "description": "Create image sliders or content sliders for Magento2 easily and enhance the user experience",
   "keywords": [
     "magento 2",
@@ -9,7 +17,7 @@
     "magento2 image slider"
   ],
   "type": "magento2-module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "require": {
     "php": "~5.6.0|7.0.2|~7.0.6",
     "magento/framework": "100.0.*|100.1.*"
